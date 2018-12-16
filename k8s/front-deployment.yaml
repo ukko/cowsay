@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front
+  labels:
+    app: example
+spec:
+  selector:
+    matchLabels:
+      app: example
+      tier: front
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: example
+        tier: front
+    spec:
+      containers:
+#        - name: nginx
+#          image: nginx
+#          ports:
+#            - containerPort: 80
+        - name: cowsay
+          image: ukko/cowsay:0.3
+          ports:
+            - containerPort: 80
+              protocol: TCP

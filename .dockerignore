@@ -1,0 +1,7 @@
+Dockerfile
+Gopkg.*
+k8s
+Makefile
+src
+vendor
+.*

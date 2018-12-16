@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: front-service
+  labels:
+    app: example
+    tier: front
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+  selector:
+    app: example
+    tier: front
