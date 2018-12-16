@@ -1,13 +1,15 @@
 package redis
 
 import (
-	"github.com/garyburd/redigo/redis"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+
+	"github.com/garyburd/redigo/redis"
 )
 
+// Pool Keep redis pool
 var (
 	Pool *redis.Pool
 )
@@ -24,7 +26,6 @@ func init() {
 func newPool(server string) *redis.Pool {
 
 	return &redis.Pool{
-
 		MaxIdle:     3,
 		IdleTimeout: 240 * time.Second,
 
@@ -44,7 +45,6 @@ func newPool(server string) *redis.Pool {
 }
 
 func cleanupHook() {
-
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
 	signal.Notify(c, syscall.SIGTERM)

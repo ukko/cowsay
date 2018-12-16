@@ -1,13 +1,13 @@
 package main
 
 import (
-	"bytes"
 	"fmt"
 	"html/template"
 	"net/http"
 	"os"
-	"os/exec"
 	"time"
+
+	"github.com/ukko/cowsay/src/fortune"
 
 	"github.com/ukko/cowsay/src/page"
 
@@ -37,19 +37,18 @@ func main() {
 
 func handleFortune(w http.ResponseWriter, r *http.Request) {
 	t := time.Now()
-	cmd := exec.Command("/usr/games/fortune")
-	var out bytes.Buffer
-	cmd.Stdout = &out
-	if err := cmd.Run(); err != nil {
+
+	f, err := fortune.New()
+	if err != nil {
 		log.Fatal(err)
 	}
 
-	log.Debug("handleFortune, out: ", out)
+	log.Debug("handleFortune, out: ", f)
 
 	tmpl := template.Must(template.ParseFiles("tmpl/layout.html"))
 
 	data := page.New()
-	data.PageContent = out.String()
+	data.PageContent = f
 	data.PageGenerated = time.Now().Sub(t).String()
 
 	if err := tmpl.Execute(w, data); err != nil {

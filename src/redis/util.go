@@ -6,6 +6,7 @@ import (
 	"github.com/garyburd/redigo/redis"
 )
 
+// Ping redis method
 func Ping() error {
 
 	conn := Pool.Get()
@@ -18,6 +19,7 @@ func Ping() error {
 	return nil
 }
 
+// Get redis method
 func Get(key string) ([]byte, error) {
 
 	conn := Pool.Get()
@@ -25,12 +27,19 @@ func Get(key string) ([]byte, error) {
 
 	var data []byte
 	data, err := redis.Bytes(conn.Do("GET", key))
+
+	if err == redis.ErrNil {
+		return nil, nil
+	}
+
 	if err != nil {
 		return data, fmt.Errorf("error getting key %s: %v", key, err)
 	}
+
 	return data, err
 }
 
+// Set redis method
 func Set(key string, value []byte) error {
 
 	conn := Pool.Get()
@@ -47,6 +56,7 @@ func Set(key string, value []byte) error {
 	return err
 }
 
+// Exists redis method
 func Exists(key string) (bool, error) {
 
 	conn := Pool.Get()
@@ -59,6 +69,7 @@ func Exists(key string) (bool, error) {
 	return ok, err
 }
 
+// Delete redis method
 func Delete(key string) error {
 
 	conn := Pool.Get()
@@ -68,6 +79,7 @@ func Delete(key string) error {
 	return err
 }
 
+// GetKeys redis method
 func GetKeys(pattern string) ([]string, error) {
 
 	conn := Pool.Get()
@@ -93,6 +105,7 @@ func GetKeys(pattern string) ([]string, error) {
 	return keys, nil
 }
 
+// Incr redis method
 func Incr(counterKey string) (int, error) {
 
 	conn := Pool.Get()
