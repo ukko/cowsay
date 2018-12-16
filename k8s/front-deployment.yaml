@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: cowsay
-          image: ukko/cowsay:0.5
+          image: ukko/cowsay:0.6
           ports:
             - containerPort: 80
               protocol: TCP

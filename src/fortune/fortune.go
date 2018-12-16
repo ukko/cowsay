@@ -28,7 +28,7 @@ func New() (string, error) {
 		return "", err
 	}
 
-	if err := redis.Set(k, []byte(out.String())); err != nil {
+	if err := redis.SetEx(k, 300, []byte(out.String())); err != nil {
 		return "", err
 	}
 

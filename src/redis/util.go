@@ -56,6 +56,23 @@ func Set(key string, value []byte) error {
 	return err
 }
 
+// SetEx redis method
+func SetEx(key string, seconds int, value []byte) error {
+
+	conn := Pool.Get()
+	defer conn.Close()
+
+	_, err := conn.Do("SETEX", key, seconds, value)
+	if err != nil {
+		v := string(value)
+		if len(v) > 15 {
+			v = v[0:12] + "..."
+		}
+		return fmt.Errorf("error setting key %s to %s: %v", key, v, err)
+	}
+	return err
+}
+
 // Exists redis method
 func Exists(key string) (bool, error) {
 
