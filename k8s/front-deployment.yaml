@@ -22,7 +22,7 @@ spec:
 #          ports:
 #            - containerPort: 80
         - name: cowsay
-          image: ukko/cowsay:0.3
+          image: ukko/cowsay:0.4
           ports:
             - containerPort: 80
               protocol: TCP
