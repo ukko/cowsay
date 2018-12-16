@@ -22,3 +22,7 @@ spec:
           ports:
             - containerPort: 80
               protocol: TCP
+        - name: redis
+          image: redis
+          ports:
+            - containerPort: 3679
