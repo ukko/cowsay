@@ -2,6 +2,22 @@
 
 
 [[projects]]
+  digest = "1:cf4e02f927af90d7f07553465b20d37fd2d59ba8d74621a6b171f10558ad5826"
+  name = "github.com/Code-Hex/Neo-cowsay"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "bd019e4fdadf5350f6188d91f7d20e6a1212fd12"
+  version = "0.0.5"
+
+[[projects]]
+  branch = "master"
+  digest = "1:daa3de4636ef4efa34d059224ebde5b9480577251f334d54abad5f8904920e08"
+  name = "github.com/Code-Hex/go-wordwrap"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "ddb85795713c2218601b44b94a5e105e5028ec42"
+
+[[projects]]
   digest = "1:69b1cc331fca23d702bd72f860c6a647afd0aa9fcbc1d0659b1365e26546dd70"
   name = "github.com/Sirupsen/logrus"
   packages = ["."]
@@ -29,6 +45,22 @@
   version = "v1.0.1"
 
 [[projects]]
+  digest = "1:0356f3312c9bd1cbeda81505b7fd437501d8e778ab66998ef69f00d7f9b3a0d7"
+  name = "github.com/mattn/go-runewidth"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "3ee7d812e62a0804a7d0a324e0249ca2db3476d3"
+  version = "v0.0.4"
+
+[[projects]]
+  digest = "1:40e195917a951a8bf867cd05de2a46aaf1806c50cf92eebf4c16f78cd196f747"
+  name = "github.com/pkg/errors"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
+  version = "v0.8.0"
+
+[[projects]]
   branch = "master"
   digest = "1:38f553aff0273ad6f367cb0a0f8b6eecbaef8dc6cb8b50e57b6a81c1d5b1e332"
   name = "golang.org/x/crypto"
@@ -51,6 +83,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/Code-Hex/Neo-cowsay",
     "github.com/Sirupsen/logrus",
     "github.com/garyburd/redigo/redis",
   ]

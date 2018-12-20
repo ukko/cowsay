@@ -6,6 +6,7 @@ import (
 	"os/exec"
 	"time"
 
+	"github.com/Code-Hex/Neo-cowsay"
 	"github.com/ukko/cowsay/src/redis"
 )
 
@@ -33,4 +34,13 @@ func New() (string, error) {
 	}
 
 	return out.String(), nil
+}
+
+// Say say as cow
+func Say(t string) (string, error) {
+	return cowsay.Say(
+		cowsay.Phrase(t),
+		cowsay.Type("default"),
+		cowsay.BallonWidth(40),
+	)
 }

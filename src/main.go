@@ -43,12 +43,17 @@ func handleFortune(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	log.Debug("handleFortune, out: ", f)
+	s, err := fortune.Say(f)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.Debug("handleFortune, out: ", s)
 
 	tmpl := template.Must(template.ParseFiles("tmpl/layout.html"))
 
 	data := page.New()
-	data.PageContent = f
+	data.PageContent = s
 	data.PageGenerated = time.Now().Sub(t).String()
 
 	if err := tmpl.Execute(w, data); err != nil {

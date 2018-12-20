@@ -1,24 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: front
+  name: cowsay
   labels:
-    app: example
+    app: cowsay
 spec:
   selector:
     matchLabels:
-      app: example
-      tier: front
-  replicas: 1
+      app: cowsay
+  replicas: 2
   template:
     metadata:
       labels:
-        app: example
-        tier: front
+        app: cowsay
     spec:
       containers:
         - name: cowsay
-          image: ukko/cowsay:0.6
+          image: ukko/cowsay:0.7
           ports:
             - containerPort: 80
               protocol: TCP

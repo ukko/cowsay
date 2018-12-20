@@ -1,14 +1,14 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: front-ingress
+  name: cowsay-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
     - http:
         paths:
-          - path: /
+          - path: /cowsay
             backend:
-              serviceName: front-service
+              serviceName: cowsay-service
               servicePort: 80
